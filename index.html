@@ -31,7 +31,7 @@
 </head>
 <body>
 
-  <h1>💌 A Valentine Surprise is Coming... 💌</h1>
+  <h1 id="surpriseHeading">💌 A Valentine Surprise is Coming... 💌</h1>
   <div id="countdown"></div>
 
   <div class="buttons" id="valentineCard">
@@ -97,9 +97,11 @@ function updateCountdown() {
 
   // Check if it's February 14th in British time
   if (britishNow.month === 1 && britishNow.day === 14) {
+    document.getElementById("surpriseHeading").style.display = "none";
     document.getElementById("countdown").style.display = "none";
     document.getElementById("valentineCard").style.display = "block";
   } else {
+    document.getElementById("surpriseHeading").style.display = "block";
     document.getElementById("countdown").style.display = "block";
     document.getElementById("valentineCard").style.display = "none";
     document.getElementById("countdown").innerHTML =

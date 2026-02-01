@@ -58,14 +58,17 @@ function updateCountdown(utcDate = new Date()) {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
+  const surpriseHeadingEl = document.getElementById("surpriseHeading");
   const countdownEl = document.getElementById("countdown");
   const valentineCardEl = document.getElementById("valentineCard");
 
   // Check if it's February 14th in British time
   if (britishNow.month === 1 && britishNow.day === 14) {
+    surpriseHeadingEl.style.display = "none";
     countdownEl.style.display = "none";
     valentineCardEl.style.display = "block";
   } else {
+    surpriseHeadingEl.style.display = "block";
     countdownEl.style.display = "block";
     valentineCardEl.style.display = "none";
     countdownEl.innerHTML =
@@ -76,6 +79,7 @@ function updateCountdown(utcDate = new Date()) {
 // Setup DOM before each test
 beforeEach(() => {
   document.body.innerHTML = `
+    <h1 id="surpriseHeading">💌 A Valentine Surprise is Coming... 💌</h1>
     <div id="countdown"></div>
     <div class="buttons" id="valentineCard" style="display: none;">
       <h1>Will you be my Valentine? 💖</h1>
@@ -104,39 +108,45 @@ test("On Feb 14 → site should be unlocked", () => {
   expect(britishNow.day).toBe(14);
 });
 
-test("On Valentine's Day → countdown should be hidden", () => {
+test("On Valentine's Day → countdown and heading should be hidden", () => {
   // Feb 14, 2025 10:00 UTC = Feb 14, 2025 10:00 GMT (British time)
   const fakeNow = new Date("2025-02-14T10:00:00Z");
   updateCountdown(fakeNow);
   
+  const surpriseHeadingEl = document.getElementById("surpriseHeading");
   const countdownEl = document.getElementById("countdown");
   const valentineCardEl = document.getElementById("valentineCard");
   
+  expect(surpriseHeadingEl.style.display).toBe("none");
   expect(countdownEl.style.display).toBe("none");
   expect(valentineCardEl.style.display).toBe("block");
 });
 
-test("Before Valentine's Day → countdown should be visible", () => {
+test("Before Valentine's Day → heading and countdown should be visible", () => {
   // Feb 1, 2025 10:00 UTC = Feb 1, 2025 10:00 GMT (British time)
   const fakeNow = new Date("2025-02-01T10:00:00Z");
   updateCountdown(fakeNow);
   
+  const surpriseHeadingEl = document.getElementById("surpriseHeading");
   const countdownEl = document.getElementById("countdown");
   const valentineCardEl = document.getElementById("valentineCard");
   
+  expect(surpriseHeadingEl.style.display).toBe("block");
   expect(countdownEl.style.display).toBe("block");
   expect(countdownEl.innerHTML).toContain("Valentine's Day unlocks in:");
   expect(valentineCardEl.style.display).toBe("none");
 });
 
-test("After Valentine's Day → countdown should be visible", () => {
+test("After Valentine's Day → heading and countdown should be visible", () => {
   // Feb 15, 2025 10:00 UTC = Feb 15, 2025 10:00 GMT (British time)
   const fakeNow = new Date("2025-02-15T10:00:00Z");
   updateCountdown(fakeNow);
   
+  const surpriseHeadingEl = document.getElementById("surpriseHeading");
   const countdownEl = document.getElementById("countdown");
   const valentineCardEl = document.getElementById("valentineCard");
   
+  expect(surpriseHeadingEl.style.display).toBe("block");
   expect(countdownEl.style.display).toBe("block");
   expect(countdownEl.innerHTML).toContain("Valentine's Day unlocks in:");
   expect(valentineCardEl.style.display).toBe("none");

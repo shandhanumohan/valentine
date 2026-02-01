@@ -30,9 +30,13 @@
       border-radius: 20px;
       box-shadow: 0px 4px 10px gray;
       transition: transform 0.3s ease;
+      display: block;
     }
     img:hover {
       transform: scale(1.05);
+    }
+    img[src=""], img:not([src]) {
+      opacity: 0;
     }
     .caption {
       margin-top: 15px;
@@ -53,15 +57,15 @@
   <div class="gallery">
     <div class="gallery-item">
       <img src="resources/photo1.jpg" alt="Our Photo Together 1">
-      <div class="caption">Memories Together 💕</div>
+      <div class="caption">"You are my today and all of my tomorrows." 💕</div>
     </div>
     <div class="gallery-item">
       <img src="resources/photo2.jpg" alt="Our Photo Together 2">
-      <div class="caption">Special Moments 💖</div>
+      <div class="caption">"In your smile, I see something more beautiful than the stars." 💖</div>
     </div>
     <div class="gallery-item">
       <img src="resources/photo3.jpg" alt="Our Photo Together 3">
-      <div class="caption">Forever Yours 💞</div>
+      <div class="caption">"Every moment with you is like a beautiful dream come true." 💞</div>
     </div>
   </div>
   <div class="main-caption">
