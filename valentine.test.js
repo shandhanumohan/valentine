@@ -28,6 +28,7 @@ function updateCountdown(now = new Date()) {
     valentineCardEl.style.display = "block";
   } else {
     countdownEl.style.display = "block";
+    valentineCardEl.style.display = "none";
     countdownEl.innerHTML =
       `Valentine's Day unlocks in: ❤️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
   }

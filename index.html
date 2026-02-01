@@ -65,6 +65,7 @@ function updateCountdown() {
     document.getElementById("valentineCard").style.display = "block";
   } else {
     document.getElementById("countdown").style.display = "block";
+    document.getElementById("valentineCard").style.display = "none";
     document.getElementById("countdown").innerHTML =
       `Valentine's Day unlocks in: ❤️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
   }

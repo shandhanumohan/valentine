@@ -32,4 +32,5 @@ jobs:
           echo "Checking required files..."
           test -f index.html && echo "index.html OK"
           test -f yes.html && echo "yes.html OK"
-          test -f photo.jpg && echo "photo.jpg present"
+          test -d resources && echo "resources directory OK"
+          test -f resources/photo1.jpg && echo "resources/photo1.jpg OK"
