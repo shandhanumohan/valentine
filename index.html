@@ -60,13 +60,14 @@ function updateCountdown() {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  document.getElementById("countdown").innerHTML =
-    `Valentine’s Day unlocks in: ❤️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
   if (now.getMonth() === 1 && now.getDate() === 14) {
-    document.getElementById("countdown").innerHTML =
-      "💖 Happy Valentine’s Day! Your surprise is unlocked 💖";
+    document.getElementById("countdown").style.display = "none";
     document.getElementById("valentineCard").style.display = "block";
+  } else {
+    document.getElementById("countdown").style.display = "block";
+    document.getElementById("valentineCard").style.display = "none";
+    document.getElementById("countdown").innerHTML =
+      `Valentine's Day unlocks in: ❤️ ${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 }
 
