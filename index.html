@@ -116,11 +116,31 @@ function goYes() {
   window.location.href = "yes.html";
 }
 
+const noButtonMessages = [
+  "Wrong decision 😢",
+  "Are you sure? 🤔",
+  "This could be a mistake 😰",
+  "Please no 🙏",
+  "Think again! 😟",
+  "Don't do it! 😭",
+  "Are you really sure? 😕",
+  "This might hurt 😢",
+  "Please reconsider 💔",
+  "Wait, think about it! 😰"
+];
+
 function moveNo() {
+  const noButton = document.getElementById("no");
+  
+  // Randomly move the button
   let x = Math.random() * (window.innerWidth - 120);
   let y = Math.random() * (window.innerHeight - 120);
-  document.getElementById("no").style.left = x + "px";
-  document.getElementById("no").style.top = y + "px";
+  noButton.style.left = x + "px";
+  noButton.style.top = y + "px";
+  
+  // Randomly change the button text
+  const randomMessage = noButtonMessages[Math.floor(Math.random() * noButtonMessages.length)];
+  noButton.textContent = randomMessage;
 }
 </script>
 </body>
