@@ -72,11 +72,11 @@ function getValentinesDate() {
   
   // Create Valentine's Day at midnight British time (Feb 14, 00:00:00)
   // In February, UK is in GMT (UTC+0), so Feb 14 00:00:00 GMT = Feb 14 00:00:00 UTC
-  const valentines = new Date(Date.UTC(year, 1, 14, 0, 0, 0));
+  const valentines = new Date(Date.UTC(year, 1, 15, 0, 0, 0));
   
   const nowUTC = Date.now();
   if (nowUTC > valentines.getTime()) {
-    return new Date(Date.UTC(year + 1, 1, 14, 0, 0, 0));
+    return new Date(Date.UTC(year + 1, 1, 15, 0, 0, 0));
   }
   return valentines;
 }
@@ -96,7 +96,7 @@ function updateCountdown() {
   const seconds = Math.floor((diff / 1000) % 60);
 
   // Check if it's February 14th in British time
-  if (britishNow.month === 1 && britishNow.day === 14) {
+  if (britishNow.month === 1 && britishNow.day === 15) {
     document.getElementById("surpriseHeading").style.display = "none";
     document.getElementById("countdown").style.display = "none";
     document.getElementById("valentineCard").style.display = "block";
